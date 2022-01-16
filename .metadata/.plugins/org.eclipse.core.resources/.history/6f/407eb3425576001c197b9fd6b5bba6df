@@ -1,0 +1,22 @@
+package entities;
+
+public class Funcionarios {
+
+	public String nome;
+	public double salarioBruto;
+	public double taxa;
+
+	public double salarioLiquido() {
+
+		return salarioBruto - taxa;
+	}
+
+	public void aumentarSalario(double porcentagem) {
+		salarioBruto = salarioLiquido() + (salarioBruto * porcentagem);
+	}
+	
+	public String toString() {
+		return String.format("%.2f", nome) + ", $ " + String.format("%.2f", salarioBruto);
+	}
+
+}

@@ -1,0 +1,34 @@
+package application;
+
+import java.util.Scanner;
+
+import entities.Quartos;
+
+public class Program {
+
+	public static void main(String[] args) {
+		
+		Scanner sc = new Scanner(System.in);
+		
+		Quartos[] quartos = new Quartos[10];
+
+		System.out.print("Quantos quartos vão ser alugados? ");
+		int n = sc.nextInt();
+		sc.nextLine();
+		
+		for (int i =0; i<n;i++) {
+			System.out.printf("Aluguel #%d: ", i);
+			System.out.print("Nome: ");
+			String nome = sc.nextLine();
+			System.out.print("E-mail: ");
+			String email= sc.nextLine();
+			System.out.print("Quarto: ");
+			String quarto = sc.nextLine();
+			
+			quartos[i] = new Quartos(nome, email, quarto);
+		}
+		
+		sc.close();
+	}
+
+}
