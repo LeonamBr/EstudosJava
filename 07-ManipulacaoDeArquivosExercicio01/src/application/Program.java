@@ -43,7 +43,7 @@ public class Program {
 			}
 
 		} catch (IOException e) {
-			e.getStackTrace();
+			System.out.println("Erro: " + e.getMessage());;
 		}
 
 	}
