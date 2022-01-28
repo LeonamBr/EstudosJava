@@ -39,14 +39,18 @@ public class Program {
 			System.out.println(obj);
 		}
 		
-		System.out.println("=== test 4: teste Insert ===");
+		System.out.println("=== test 4: teste Insert() ===");
 		
 		Seller newSeller = new Seller(null, "Leonam Braga", "leonam@gmail.com", new Date(), 5000.00, new Department(2, null));
 		sellerDao.insert(newSeller);
 		
 		System.out.println("Iserted! new id = " + newSeller.getId());
 		
-		
+		System.out.println("=== test 5: teste upDate() ===");
+		seller = sellerDao.findById(1);
+		seller.setName("Leonam Braga");
+		sellerDao.update(seller);
+		System.out.println("Update completo!");
 		
 		
 	}
