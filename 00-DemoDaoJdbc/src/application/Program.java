@@ -3,6 +3,7 @@ package application;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Scanner;
 
 import model.dao.DaoFactory;
 import model.dao.SellerDao;
@@ -12,47 +13,57 @@ import model.entities.Seller;
 public class Program {
 
 	public static void main(String[] args) {
-		
+
+		Scanner sc = new Scanner(System.in);
+
 		SellerDao sellerDao = DaoFactory.createSellerDao();
-		
+
 		System.out.println("=== test 1: teste findById() ===");
 		Seller seller = sellerDao.findById(3);
-		
+
 		System.out.println(seller);
-		
+
 		System.out.println("=== test 2: teste findByDepartmentId() ===");
 		List<Seller> list = new ArrayList<>();
 		Department dep = new Department(2, null);
-		
+
 		list = sellerDao.findbyDepartmentId(dep);
-		
-		for(Seller obj: list) {
+
+		for (Seller obj : list) {
 			System.out.println(obj);
 		}
-		
+
 		System.out.println("=== test 3: teste findAll() ===");
 		List<Seller> lista = new ArrayList<>();
-		
+
 		lista = sellerDao.findAll();
-		
-		for(Seller obj: lista) {
+
+		for (Seller obj : lista) {
 			System.out.println(obj);
 		}
-		
+
 		System.out.println("=== test 4: teste Insert() ===");
-		
-		Seller newSeller = new Seller(null, "Leonam Braga", "leonam@gmail.com", new Date(), 5000.00, new Department(2, null));
+
+		Seller newSeller = new Seller(null, "Leonam Braga", "leonam@gmail.com", new Date(), 5000.00,
+				new Department(2, null));
 		sellerDao.insert(newSeller);
-		
+
 		System.out.println("Iserted! new id = " + newSeller.getId());
-		
+
 		System.out.println("=== test 5: teste upDate() ===");
 		seller = sellerDao.findById(1);
 		seller.setName("Leonam Braga");
 		sellerDao.update(seller);
 		System.out.println("Update completo!");
-		
-		
+
+		System.out.println("=== test 6: teste upDate() ===");
+		System.out.print("Escolha um id para apagar: ");
+		int id = sc.nextInt();
+		sellerDao.deleteById(id);
+		System.out.println("Delete complete!");
+
+		sc.close();
+
 	}
 
 }
